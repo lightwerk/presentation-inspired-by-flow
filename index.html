@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <title>Slide Shows in XHTML</title>
+    <meta name="copyright" content="Without any Copyright in 2013 by Felix Oertel, Lightwerk GmbH" />
+    <meta name="duration" content="45" />
+    <meta name="font-size-adjustment" content="-2">
+    <link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/slidy.css" />
+	<link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/blue.css" />
+    <link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/shCore.css" />
+    <link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/shThemeDefault.css" />
+    <script src="js/slidy.js" charset="utf-8" type="text/javascript"></script>
+    <script src="js/shCore.js" charset="utf-8" type="text/javascript"></script>
+    <script src="js/shBrushPhp.js" charset="utf-8" type="text/javascript"></script>
+    <script type="text/javascript">SyntaxHighlighter.all()</script>
+    <style type="text/css" style="display: none !important;">object:not([type]),object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid$=":d27cdb6e-ae6d-11cf-96b8-444553540000"],object[codebase*="swflash.cab"],object[data*=".swf"],embed[type="application/x-shockwave-flash"],embed[src*=".swf"],object[type="application/x-shockwave-flash"],object[src*=".swf"],object[codetype="application/x-shockwave-flash"],iframe[type="application/x-shockwave-flash"],object[classid$=":166B1BCA-3F9C-11CF-8075-444553540000"],object[codebase*="sw.cab"],object[data*=".dcr"],embed[type="application/x-director"],embed[src*=".dcr"],object[type="application/x-director"],object[src*=".dcr"],object[classid$=":15B782AF-55D8-11D1-B477-006097098764"],object[codebase*="awswaxf.cab"],object[data*=".aam"],embed[type="application/x-authorware-map"],embed[src*=".aam"],object[type="application/x-authorware-map"],object[src*=".aam"],object[classid*="32C73088-76AE-40F7-AC40-81F62CB2C1DA"],object[type="application/ag-plugin"],object[type="application/x-silverlight"],object[type="application/x-silverlight-2"],object[source*=".xaml"],object[sourceelement*="xaml"],embed[type="application/ag-plugin"],embed[source*=".xaml"]{display: none !important;}</style>
+</head>
+<body class="single_slide">
+	<div class="background">
+		<img src="img/logo.png" alt="Lightwerk Logo" id="head-logo" />
+	</div>
+
+	<div class="slide cover">
+		<img src="img/logo.png" alt="Lightwerk Logo" class="cover" />
+		<br clear="all" />
+		<h1>How Flow influenced TYPO3 CMS</h1>
+		<h4>Inspiring Flow, Kolbermoor</h4>
+	</div>
+<div class="slide">
+    <h1>TYPO3.Surf</h1>
+<pre class="brush: php">&lt;?php
+$node = new \TYPO3\Surf\Domain\Model\Node('website_build');
+$node->setHostname('lightwerk.com');
+$node->setOption('username', 'www-data');
+
+$application = new \Lightwerk\Surf\Application\TYPO3\CMS();
+$application->setDeploymentPath('/var/www/website/www/htdocs');
+$application->setReleasesDirectory('');
+$application->setContext('Live');
+$application->setOption('repositoryUrl', 'git@git.lightwerk.com:internal/website.git');
+
+$application->addNode($node);
+
+$workflow = new \TYPO3\Surf\Domain\Model\SimpleWorkflow();
+
+$deployment->setWorkflow($workflow);
+$deployment->addApplication($application);
+?></pre>
+</div>
+<div class="slide">
+    <h1>Seite 2</h1>
+    <h2>Überschrift</h2>
+    <pre class="brush: php">&lt;?php
+    class Foo {
+        
+        public function echo() {
+            echo 'hello world';
+        }
+    }
+?php></pre>
+</div>
+</body>
+</html>
