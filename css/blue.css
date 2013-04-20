@@ -126,7 +126,7 @@ div.slide h1 a:active {
 	padding-bottom: 0.2em;
 	padding-left: 0;
 	padding-right: 0;
-	height: 2em;
+	height: 1em;
 	float: right;
 	z-index: 2;
 }
@@ -199,16 +199,17 @@ p.copyright { font-size: smaller }
 
 a img { border-width: 0; border-style: none }
 
-a:visited { color: navy }
-a:link { color: navy }
-a:hover { color: red; text-decoration: underline }
-a:active { color: red; text-decoration: underline }
+a:visited { color: #006A4D; text-decoration: underline }
+a:link { color: #006A4D; text-decoration: underline }
+a:hover { color: #006A4D; text-decoration: underline }
+a:active { color: #006A4D; text-decoration: underline }
 
-a {text-decoration: none}
-.navbar a:link {color: white}
-.navbar a:visited {color: yellow}
-.navbar a:active {color: red}
-.navbar a:hover {color: red}
+a {color: #006A4D; text-decoration: underline}
+.navbar a {color: white, text-decoration: underline}
+.navbar a:link {color: white, text-decoration: underline}
+.navbar a:visited {color: white, text-decoration: underline}
+.navbar a:active {color: white, text-decoration: underline}
+.navbar a:hover {color: white, text-decoration: underline}
 
 ul { list-style-type: square; }
 ul ul { list-style-type: disc; }
@@ -497,3 +498,9 @@ div.comment { display: none; visibility: hidden }
  div.slide.cover h1 { background: transparent; color: black }
  div.comment { display: block; visibility: visible }
 }
+
+.black { color: black }
+
+.right { float: right; padding-right: 55px }
+
+.center { margin-top: 55px; text-align: center }

@@ -4,44 +4,446 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <title>Slide Shows in XHTML</title>
-    <meta name="copyright" content="Without any Copyright in 2013 by Felix Oertel, Lightwerk GmbH" />
+    <meta name="copyright" content="&copy; 2013, Felix Oertel - feel free to use under &lt;a href=http://opensource.org/licenses/MIT&gt; MIT license&lt;/&gt;" />
     <meta name="duration" content="45" />
     <meta name="font-size-adjustment" content="-2">
     <link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/slidy.css" />
-	<link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/blue.css" />
+	<link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/blue.css?123" />
     <link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/shCore.css" />
     <link rel="stylesheet" type="text/css" media="screen, projection, print" href="css/shThemeDefault.css" />
     <script src="js/slidy.js" charset="utf-8" type="text/javascript"></script>
     <script src="js/shCore.js" charset="utf-8" type="text/javascript"></script>
     <script src="js/shBrushPhp.js" charset="utf-8" type="text/javascript"></script>
+    <script src="js/shBrushXml.js" charset="utf-8" type="text/javascript"></script>
+    <script src="js/shBrushPlain.js" charset="utf-8" type="text/javascript"></script>
     <script type="text/javascript">SyntaxHighlighter.all()</script>
     <style type="text/css" style="display: none !important;">object:not([type]),object[classid$=":D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid$=":d27cdb6e-ae6d-11cf-96b8-444553540000"],object[codebase*="swflash.cab"],object[data*=".swf"],embed[type="application/x-shockwave-flash"],embed[src*=".swf"],object[type="application/x-shockwave-flash"],object[src*=".swf"],object[codetype="application/x-shockwave-flash"],iframe[type="application/x-shockwave-flash"],object[classid$=":166B1BCA-3F9C-11CF-8075-444553540000"],object[codebase*="sw.cab"],object[data*=".dcr"],embed[type="application/x-director"],embed[src*=".dcr"],object[type="application/x-director"],object[src*=".dcr"],object[classid$=":15B782AF-55D8-11D1-B477-006097098764"],object[codebase*="awswaxf.cab"],object[data*=".aam"],embed[type="application/x-authorware-map"],embed[src*=".aam"],object[type="application/x-authorware-map"],object[src*=".aam"],object[classid*="32C73088-76AE-40F7-AC40-81F62CB2C1DA"],object[type="application/ag-plugin"],object[type="application/x-silverlight"],object[type="application/x-silverlight-2"],object[source*=".xaml"],object[sourceelement*="xaml"],embed[type="application/ag-plugin"],embed[source*=".xaml"]{display: none !important;}</style>
 </head>
 <body class="single_slide">
-	<div class="background">
-		<img src="img/logo.png" alt="Lightwerk Logo" id="head-logo" />
-	</div>
 
-	<div class="slide cover">
-		<img src="img/logo.png" alt="Lightwerk Logo" class="cover" />
-		<br clear="all" />
-		<h1>How Flow influenced TYPO3 CMS</h1>
-		<h4>Inspiring Flow, Kolbermoor</h4>
-	</div>
+
+
+<div class="background">
+	<img src="img/logo.png" alt="Lightwerk Logo" id="head-logo" />
+</div>
+
+
+
+<div class="slide cover">
+	<img src="img/logo.png" alt="Lightwerk Logo" class="cover" />
+	<br clear="all" />
+	<h1>How Flow influenced TYPO3 CMS</h1>
+    <p><img src="res/inspiring-flow-logo.png" /></p>
+</div>
+
+
+
+<div class="slide">
+    <h1>Felix Oertel</h1>
+    <div class="right"><img src="img/felix.jpg" alt="Felix Oertel Portrait" class="cover" /></div>
+    <ul class="incremental">
+        <li>27, married, father</li>
+        <li>Head of Development with Lightwerk in Stuttgart and Hamburg</li>
+        <li>Teamleader of the TYPO3 Extbase project</li>
+        <li><a href="http://twitter.com/foertel">@foertel</a></li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>Good old times?</h1>
+    <div class="right"><a href="http://commons.wikimedia.org/wiki/File:Lanyon_Quoit_Stoneage_barrow_-_geograph.org.uk_-_287895.jpg"><img src="res/stoneage.jpg" /></a></div>
+    <h3>We used to build software ...</h3>
+    <ul class="incremental">
+        <li>TYPO3 5.0 was just around the corner for a long time</li>
+        <li>We mainly tried to keep TYPO3 4.x not falling apart</li>
+        <li>From 2011, backports and innovations started to pop ...</li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Extbase</h1>
+    <h3>Most wanted ...</h3>
+    <ul class="incremental">
+        <li>Initially started by Jochen Rau</li>
+        <li>Under heavy development (again)
+            <ul class="incremental">
+                <li>4 codesprints last year</li>
+                <li>18 people at last codesprint</li>
+            </ul>
+        </li>
+        <li>Shipped with TYPO3 CMS from version 4.3
+            <ul class="incremental">
+                <li>it's enabled by default</li>
+                <li>it's used by system extensions</li>
+            </ul>
+        </li>
+        <li>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Extbase</h1>
+    <h3>Clean Code</h3>
+    <ul class="incremental">
+        <li>
+            <pre class="brush: php">function displayList($excludeUids = 0) {
+    if ($this->debugTimes) {
+		$this->hObj->getParsetime(__METHOD__);
+	}
+
+	$theCode = $this->theCode;
+
+	$where = '';
+	$content = '';
+	switch ($theCode) {
+		case 'LATEST' :
+			$prefix_display = 'displayLatest';
+			$templateName = 'TEMPLATE_LATEST';
+			if (! $this->conf['displayArchivedInLatest']) {
+
+    // skipped 362 lines
+
+	return $content;
+}</pre>
+        </li>
+        <li>
+            <pre class="brush: php">public function listAction() {
+	$this->view->assign('news', $this->newsRepository->findDemanded());
+}</pre>
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Extbase</h1>
+    <h3>Clean Code</h3>
+    <pre><strong>➜  dev</strong>  cat tt_news/pi/class.tx_ttnews.php|wc -l
+    4158
+<strong>➜  dev</strong>  cat news/Classes/Controller/NewsController.php|wc -l
+     324</pre>
+     <p>more code in general, but less code in the controller</p>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Extbase</h1>
+    <h3>Signal Slots</h3>
+    <ul class="incremental">
+        <li>replaced unspeakable registration in GLOBALS variable.</li>
+        <li>
+            <pre class="brush: php">if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['tt_news']['additionalFormSearchFields'])) {
+	foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['tt_news']['additionalFormSearchFields'] as $_classRef) {
+		$_procObj = & t3lib_div::getUserObj($_classRef);
+		$searchMarkers = $_procObj->additionalFormSearchFields($this, $searchMarkers);
+	}
+}</pre>
+        </li>
+        <li>
+            <pre class="brush: php">$this->signalSlotDispatcher->dispatch(
+    'TYPO3\\CMS\\Core\\Resource\\ResourceStorage',
+    self::SIGNAL_PreFileCopy,
+    array($file, $targetFolder)
+);</pre>
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Extbase</h1>
+    <h3>ObjectManager</h3>
+    <ul>
+        <li>replaced this big t3lib_div::makeInstance-factories</li>
+        <li><pre class="brush: php">$this->objectManager->get('\TYPO3\CMS\About\Domain\Repository\ExtensionRepository')</pre></li>
+        <li>resolves Interfaces automatically</li>
+        <li><pre class="brush: php">$this->objectManager->get('\Lightwerk\Rest\DataProvider\DataProviderInterface')</pre></li>
+        <li>might be CurlDataProvider or WgetDataProvider</li>
+        <li>Dependency Injection</li>
+        <li><pre class="brush: php">/**
+ * @var \Lightwerk\Rest\DataProvider\DataProviderInterface
+ * @inject
+ */
+protected $dataProvider;</pre></li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Extbase increasig extension quality</h1>
+    <h3>Security</h3>
+    <ul>
+        <li><pre class="brush: php">$res = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+    '*',
+    'tx_myext_foo',
+    'title = \'' . t3lib_div::_GP('title') . '\''
+);</pre></li>
+        <li><pre class="brush: php">$this->FooRepository->findByName($name);</pre></li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Extbase increasig extension quality</h1>
+    <h3>Validation</h3>
+    <ul>
+        <li><pre class="brush: php">if (empty($email)) {
+    $error[] = $this->pi_getLL('error_mail_empty');
+}
+
+if (empty($pin)) {
+    $error[] = $this->pi_getLL('error_pin_empty');
+} elseif (!is_int($pin)) {
+    $error[] = $this->pi_getLL('error_pin_integer');
+}
+    </pre></li>
+        <li><pre class="brush: php">/**
+ * @var string
+ * @Validate NotEmpty
+ * @Validate EmailAddress
+ */
+protected $email;</pre></li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Fluid</h1>
+    <h3>Remember this?</h3>
+    <ul class="incremental">
+        <li>
+            <pre class="brush: xml">&lt;!-- ###CONTENT### begin
+	This is the part of the template substituted with the list of news:
+-->
+	&lt;!-- ###NEWS### begin
+		Template for a single item
+	-->
+		&lt;div class="news-latest-item">
+			&lt;span class="news-latest-date">###NEWS_DATE### ###NEWS_TIME###&lt;/span>
+			&lt;h2>&lt;!--###LINK_ITEM###-->###NEWS_TITLE###&lt;!--###LINK_ITEM###-->&lt;/h2>
+			&lt;!--###LINK_ITEM###-->###NEWS_IMAGE###&lt;!--###LINK_ITEM###-->
+			&lt;!--###LINK_ITEM###-->###NEWS_SUBHEADER###&lt;!--###LINK_ITEM###-->&lt;hr class="clearer" />
+			###CATWRAP_B### ###TEXT_CAT_LATEST### ###NEWS_CATEGORY### ###NEWS_CATEGORY_IMAGE### ###CATWRAP_E###
+		&lt;/div>
+	&lt;!-- ###NEWS### end-->
+&lt;!-- ###CONTENT###  end --></pre>
+        </li>
+        <li>
+            <pre class="brush: xml">&lt;f:for each="{news}" as="newsItem">
+	&lt;f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings}" />
+&lt;/f:for></pre>
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Fluid</h1>
+    <h3>Or this?</h3>
+    <ul class="incremental">
+        <li>
+            <pre class="brush: php">$markerArray = $this->getXmlHeader();
+$subpartArray['###HEADER###'] = $this->cObj->substituteMarkerArray($this->getNewsSubpart($t['total'], '###HEADER###'), $markerArray);
+$t['total'] = $this->cObj->substituteMarkerArray($t['total'], array(
+		'###XML_DECLARATION###' => $markerArray['###XML_DECLARATION###']));
+$t['total'] = $this->cObj->substituteMarkerArray($t['total'], array('###SITE_LANG###' => $markerArray['###SITE_LANG###']));
+$t['total'] = $this->cObj->substituteSubpart($t['total'], '###HEADER###', $subpartArray['###HEADER###'], 0);
+$t['total'] = $this->cObj->substituteSubpart($t['total'], '###CONTENT###', '', 0);</pre>
+        </li>
+        <li>
+            <pre class="brush: php">public function listAction() {
+	$this->view->assign('news', $this->newsRepository->findDemanded());
+}</pre>
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Fluid</h1>
+    <h3>Or this one?</h3>
+    <ul class="incremental">
+        <li>
+            <pre class="brush: php">$linkWrap = explode(
+    $this->token, 
+    $this->pi_linkTP_keepPIvars(
+        $this->token,
+        $piVarsArray,
+        $this->allowCaching,
+        $this->conf['dontUseBackPid'],
+        $singlePid)
+    );</pre>
+        </li>
+        <li>
+            <pre class="brush: xml">&lt;f:link.action action="show" arguments="{news: news}">more ...&lt;/f:link.action></pre>
+        </li>
+        <li class="center">Code-examples might be chosen to make my case. ;) Taken from tt_news and news.</li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Fluid</h1>
+    <h3>Filesystem</h3>
+    <center><table cellspacing="25px"><tr><td valign="top"><img src="res/old-templates.jpg" /></td valign="top"><td>vs.</td><td valign="top"><img src="res/new-templates.jpg" /></td></tr></table></center>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Fluid</h1>
+    <h3>Backend Layouts</h3>
+        <pre class="brush: xml">&lt;table width="100%">
+	&lt;tr>
+		&lt;td colspan="2" style="border: 1px solid #ccc;">
+			&lt;f:cObject typoscriptObjectPath="lib.headerColumn" />
+		&lt;/td>
+	&lt;/tr>
+	&lt;tr>
+		&lt;td width="66%" style="border: 1px solid #ccc;">
+			&lt;f:cObject typoscriptObjectPath="lib.mainColumn" />
+		&lt;/td>
+		&lt;td width="*" style="border: 1px solid #ccc;">
+			&lt;f:cObject typoscriptObjectPath="lib.sidebarColumn" />
+		&lt;/td>
+	&lt;/tr>
+&lt;/table></pre>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Fluid</h1>
+    <h3>Backend Layouts</h3>
+    <p><pre class="brush: plain">lib.headerColumn &lt; styles.content.getLeft
+lib.mainColumn &lt; styles.content.get
+lib.sidebarColumn &lt; styles.content.getRight
+
+page = PAGE
+page.10 = FLUIDTEMPLATE
+page.10 {
+  file.stdWrap.cObject = CASE
+  file.stdWrap.cObject {
+    # slide the template
+    key.data = levelfield:-1, backend_layout_next_level, slide
+    key.override.field = backend_layout
+    # default template file
+    default = TEXT
+    default.value = fileadmin/templates/Index.html
+    # template file for backend-layout with ID 2
+    2 = TEXT
+    2.value = fileadmin/templates/Special.html
+  }
+  partialRootPath = fileadmin/templates/Partials/
+  layoutRootPath = fileadmin/templates/Layouts/  
+}</pre>
+    <p><img src="res/belayouts-picker.jpg" /></p>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Fluid</h1>
+    <h3>Backend Layouts</h3>
+    <div class="center"><img src="res/belayouts-1.jpg" /></div>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Fluid</h1>
+    <h3>Backend Layouts</h3>
+    <div class="center"><img src="res/belayouts-2.jpg" /></div>
+</div>
+
+
+
+<div class="slide">
+    <h1>Namespaces</h1>
+    <h3>seperating extensions with vendor namespaces</h3>
+    <ul class="incremental">
+        <li>used throughout the TYPO3 CMS core</li>
+        <li>old syntax will be droped soon</li>
+        <li>
+            <pre class="brush: php">namespace TYPO3\CMS\About\Controller;
+class AboutController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {</pre>
+        </li>
+    </ul>
+</div>
+
+
+
 <div class="slide">
     <h1>TYPO3.Surf</h1>
+    <h3>What you used to do ...</h3>
+    <ul class="incremental">
+        <li>
+            <pre><span class="black">➜  ~</span>  ssh web.vm
+Linux web 3.2.0-4-amd64 #1 SMP Debian 3.2.41-2 x86_64
+
+You have new mail.
+<span class="black">foertel@web:~$</span> cd /var/www/b
+<span class="black">foertel@web:/var/www/b$</span> git pull
+remote: Counting objects: 35, done.
+remote: Compressing objects: 100% (29/29), done.
+remote: Total 35 (delta 10), reused 0 (delta 0)
+Receiving objects: 100% (35/35), 22.56 KiB, done.
+Resolving deltas: 100% (10/10), done.
+<span class="black">foertel@web:/var/www/b$</span> git tag -am 'release 1.0.1' release-1.0.1
+<span class="black">foertel@web:/var/www/b$</span> git push --tags
+<span class="black">foertel@web:/var/www/b$</span> cd ..
+<span class="black">foertel@web:/var/www$</span> unlink htdocs && ln -s b/ htdocs</pre>
+        </li>
+        <li>
+            Don't forget to clear that caches!
+        </li>
+        <li class="incremental">And I hope you brought some time ...<br />
+            <a href="http://commons.wikimedia.org/wiki/File:Server-web.svg?uselang=de"><img src="res/webserver.png" /></a>
+            <img src="res/webserver.png" /><img src="res/webserver.png" /><img src="res/webserver.png" /><img src="res/webserver.png" />
+            <img src="res/webserver.png" /><img src="res/webserver.png" />
+        </li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Surf</h1>
+    <h3>Easy to deploy your TYPO3 based website now ...</h3>
 <pre class="brush: php">&lt;?php
-$node = new \TYPO3\Surf\Domain\Model\Node('website_build');
-$node->setHostname('lightwerk.com');
-$node->setOption('username', 'www-data');
+$nodes = array(
+	array('identifier' => 'fe-node1', 'hostname' => 'www1.lightwerk.com'),
+	array('identifier' => 'fe-node2', 'hostname' => 'www2.lightwerk.com'),
+	array('identifier' => 'fe-node3', 'hostname' => 'www3.lightwerk.com'),
+	array('identifier' => 'fe-node4', 'hostname' => 'www4.lightwerk.com'),
+	array('identifier' => 'fe-node5', 'hostname' => 'www5.lightwerk.com'),
+	array('identifier' => 'fe-node5', 'hostname' => 'www6.lightwerk.com'),
+);
 
 $application = new \Lightwerk\Surf\Application\TYPO3\CMS();
 $application->setDeploymentPath('/var/www/website/www/htdocs');
 $application->setReleasesDirectory('');
-$application->setContext('Live');
+$application->setContext('Production');
 $application->setOption('repositoryUrl', 'git@git.lightwerk.com:internal/website.git');
 
-$application->addNode($node);
+foreach ($nodes as $node) {
+	$application->addNode(new \TYPO3\Surf\Domain\Model\Node($node['identifier'])->setHostname($node['hostname']));
+}
 
 $workflow = new \TYPO3\Surf\Domain\Model\SimpleWorkflow();
 
@@ -49,17 +451,127 @@ $deployment->setWorkflow($workflow);
 $deployment->addApplication($application);
 ?></pre>
 </div>
+
+
+
 <div class="slide">
-    <h1>Seite 2</h1>
-    <h2>Überschrift</h2>
-    <pre class="brush: php">&lt;?php
-    class Foo {
-        
-        public function echo() {
-            echo 'hello world';
-        }
-    }
-?php></pre>
+    <h1>TYPO3.Surf</h1>
+    <h3>Easy to write your own tasks ...</h3>
+    <pre class="brush: php">
+/**
+ * @param \TYPO3\Surf\Domain\Model\Node $node
+ * @param \TYPO3\Surf\Domain\Model\Application $application
+ * @param \TYPO3\Surf\Domain\Model\Deployment $deployment
+ * @param array $options
+ * @return void
+ */
+public function execute(Node $node, Application $application, Deployment $deployment, array $options = array()) {
+	$context = $application->getContext();
+	$commands = array(
+		"cd " . $application->getDeploymentPath() . $application->getReleasesDirectory(),
+		"export TYPO3_CONTEXT=" . $context . " && ./typo3/cli_dispatch.phpsh coreapi cache:clearallcaches",
+		"export TYPO3_CONTEXT=" . $context . " && ./typo3/cli_dispatch.phpsh coreapi cache:clearconfigurationcache"
+	);
+	$this->shell->executeOrSimulate($commands, $node, $deployment);
+}</pre>
+<p class="center">Check out <a href="https://github.com/lightwerk/Lightwerk.Surf">github.com:lightwerk/Lightwerk.Surf</a> for the TYPO3 CMS specific tasks and workflows.</p>
 </div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Surf</h1>
+    <ul class="incremental">
+        <li>unified base to work on deployment needs</li>
+        <li>widely accepted in the community and open for contributions</li>
+        <li>triggers from all CI tools</li>
+        <li>give it a try <a href="https://git.typo3.org/FLOW3/Applications/Surf.git">git.typo3.org:FLOW3/Applications/Surf.git</a></li>
+        <li>check out tutorial in <a href="http://twitter.com/etobi">@etobi</a>'s  <a href="http://etobi.de/blog/tag/typo3-surf/">blog</a></li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>XLIFF</h1>
+    <h2>Last year in res/locallang.xml ...</h2>
+    <pre class="brush: xml">&lt;?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+&lt;T3locallang>
+	&lt;meta type="array">
+		&lt;type>module&lt;/type>
+		&lt;description>Language labels for the blog_example extension&lt;/description>
+	&lt;/meta>
+	&lt;data type="array">
+		&lt;languageKey index="default" type="array">
+			&lt;label index="back">back&lt;/label>
+		&lt;/languageKey>
+		&lt;languageKey index="de" type="array">
+			&lt;label index="back">Zurück&lt;/label>
+		&lt;/languageKey>
+	&lt;/data>
+&lt;/T3locallang></pre>
+</div>
+
+
+
+<div class="slide">
+    <h1>XLIFF</h1>
+    <h2>And your translator went ...</h2>
+    <p class="center"><img src="res/translator-mad.jpg" /></p>
+</div>
+
+
+
+<div class="slide">
+    <h1>XLIFF</h1>
+    <h2>Now in Resources/Private/Language/De/Locallang.xlf ...</h2>
+    <pre class="brush: xml">&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;xliff version="1.0">
+	&lt;file source-language="en" datatype="plaintext" original="messages" date="2011-10-17T20:22:37Z" product-name="wizard_sortpages">
+		&lt;header/>
+		&lt;body>
+			&lt;trans-unit id="wiz_sort" xml:space="preserve">
+				&lt;source>Sort pages&lt;/source>
+			&lt;/trans-unit>
+		&lt;/body>
+	&lt;/file>
+&lt;/xliff></pre>
+<p class="center"><img src="res/translator-happy.jpg" /></p>
+</div>
+
+
+
+<div class="slide">
+    <h1>XLIFF</h1>
+    <ul class="incremental">
+        <li>used throughout the TYPO3 CMS core</li>
+        <li>wide range of tools available</li>
+        <li>standarized, so well accepted by translating agencies</li>
+        <li><a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xliff">OASIS-blessed</a></li>
+    </ul>
+</div>
+
+
+
+<div class="slide">
+    <h1>TYPO3.Soap</h1>
+    <ul class="incremental">
+        <li>offers your domain model objects through an soap-API</li>
+        <li>now backported to TYPO3 6.0 and Extbase</li>
+        <li>give it a try <a href="https://github.com/lightwerk/soap">github:lightwerk/soap</a></li>
+        <li>check out the (FLOW-based) howto in <a href="http://twitter.com">@networkteam</a>'s <a href="http://www.networkteam.com/blog/post/soap-webservices-mit-typo3-flow.html">blog</a> to get the drift.</li>
+    </ul>
+</div>
+
+
+
+<div class="slide cover">
+	<img src="img/logo.png" alt="Lightwerk Logo" class="cover" />
+	<br clear="all" />
+	<h1>Questions?</h1>
+</div>
+
+
+
 </body>
 </html>
